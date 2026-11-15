@@ -8,6 +8,7 @@ public class Bulletin {
 	int bonus = 5;
         int moyenne = total / 3 + bonus;
         System.out.println("Étudiant: " + etudiant);
+	System.out.println("Notes : " + note1 + ", " + note2 + ", " + note3);
 	System.out.println("Total: " + total);
         System.out.println("Moyenne : " + moyenne);
     }
