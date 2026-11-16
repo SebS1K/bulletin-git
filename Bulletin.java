@@ -1,6 +1,7 @@
 public class Bulletin {
     private static final int BONUS = 5;
 	private static final int NB_NOTES = 3;
+	static final int SEUIL_REUSSITE = 60;
 
 	public static void main(String[] args){
         afficherBulletin("Étudiant démonstration", 70, 100, 70);
@@ -16,6 +17,12 @@ public class Bulletin {
 		System.out.println("Total : " + total);
         System.out.println("Moyenne : " + moyenne);
 		System.out.println("----------");
+
+		if (moyenne >= SEUIL_REUSSITE) {
+			System.out.println("Mention : Réussite");
+		} else {
+			System.out.println("Mention : Échec");
+		}
 	}
 
 	private static int calculerMoyenne(int total) {
