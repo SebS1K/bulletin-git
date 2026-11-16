@@ -3,27 +3,18 @@ public class Bulletin {
 	private static final int NB_NOTES = 3;
 
 	public static void main(String[] args){
-        String etudiant = "Étudiant démonstration";
-        int note1 = 70;
-        int note2 = 100;
-        int note3 = 70;
-	int total = note1 + note2 + note3;
-	int bonus = BONUS;
-        int moyenne = total / NB_NOTES + bonus;
-        System.out.println("Étudiant: " + etudiant);
-	System.out.println("Notes : " + note1 + ", " + note2 + ", " + note3);
-	System.out.println("Total: " + total);
-        System.out.println("Moyenne : " + moyenne);
-	System.out.println("----------");
-	String etudiant2 = "Étudiante assidue";
-	int note4 = 90;
-	int note5 = 80;
-	int note6 = 85;
-	int total2 = note4 + note5 + note6;
-	int moyenne2 = total2 / 3 + 5;
-	System.out.println("Étudiant : " + etudiant2);
-	System.out.println("Notes : " + note4 + ", " + note5 + ", " + note6);
-	System.out.println("Total : " + total2);
-	System.out.println("Moyenne : " + moyenne2);
+        afficherBulletin("Étudiant démonstration", 70, 100, 70);
+		System.out.println("----------");
+		afficherBulletin("Étudiante assidue", 90, 80, 85);
     }
+
+	private static void afficherBulletin(String etudiant, int note1, int note2, int note3) {
+		int total = note1 + note2 + note3;
+        int moyenne = total / NB_NOTES + BONUS;
+        System.out.println("Étudiant : " + etudiant);
+		System.out.println("Notes : " + note1 + ", " + note2 + ", " + note3);
+		System.out.println("Total : " + total);
+        System.out.println("Moyenne : " + moyenne);
+		System.out.println("----------");
+	}
 }
