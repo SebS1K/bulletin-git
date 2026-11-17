@@ -1,3 +1,6 @@
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 public class Bulletin {
     private static final int BONUS = 5;
 	private static final int NB_NOTES = 3;
@@ -6,7 +9,7 @@ public class Bulletin {
 	public static void main(String[] args){
         afficherBulletin("Étudiant démonstration", 70, 100, 70);
 		System.out.println("----------");
-		afficherBulletin("Étudiante assidue", 90, 80, 85);
+		System.out.println(exporterJson("Étudiante assidue", 90, 80, 85));
     }
 
 	private static void afficherBulletin(String etudiant, int note1, int note2, int note3) {
@@ -29,5 +32,13 @@ public class Bulletin {
 
 	private static int calculerMoyenne(int total) {
 		return total / NB_NOTES + BONUS;
+	}
+
+	static String exporterJson(String etudiant, int note1, int note2, int note3){
+		int total = note1 + note2 + note3;
+		int moyenne = calculerMoyenne(total);
+		ResumeBulletin resume = new ResumeBulletin(etudiant, total, moyenne, calculerMention(moyenne));
+		Gson gson = new GsonBuilder().setPrettyPrinting().create();
+		return gson.toJson(resume);
 	}
 }
