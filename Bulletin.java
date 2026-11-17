@@ -22,7 +22,6 @@ public class Bulletin {
 
 	static String calculerMention(int moyenne) {
 		int x = moyenne;
-		System.out.println("DEBUG x = " + x);
 		if (x >= 60) {
 			return "Réussite";
 		}
