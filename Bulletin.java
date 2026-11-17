@@ -17,12 +17,16 @@ public class Bulletin {
 		System.out.println("Total : " + total);
         System.out.println("Moyenne : " + moyenne);
 		System.out.println("----------");
+		System.out.println("Mention : " + calculerMention(moyenne));
+	}
 
-		if (moyenne >= SEUIL_REUSSITE) {
-			System.out.println("Mention : Réussite");
-		} else {
-			System.out.println("Mention : Échec");
+	static String calculerMention(int moyenne) {
+		int x = moyenne;
+		System.out.println("DEBUG x = " + x);
+		if (x >= 60) {
+			return "Réussite";
 		}
+		return "Échec";
 	}
 
 	private static int calculerMoyenne(int total) {
