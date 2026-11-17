@@ -21,8 +21,7 @@ public class Bulletin {
 	}
 
 	static String calculerMention(int moyenne) {
-		int x = moyenne;
-		if (x >= 60) {
+		if (moyenne >= SEUIL_REUSSITE) {
 			return "Réussite";
 		}
 		return "Échec";
