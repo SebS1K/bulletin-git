@@ -13,7 +13,7 @@ public class Bulletin {
     }
 
 	private static void afficherBulletin(String etudiant, int note1, int note2, int note3) {
-		int total = note1 + note2 + note3;
+		int total = verifierNote(note1) + verifierNote(note2) + verifierNote(note3);
         int moyenne = calculerMoyenne(total);
         System.out.println("Étudiant : " + etudiant);
 		System.out.println("Notes : " + note1 + ", " + note2 + ", " + note3);
@@ -30,12 +30,19 @@ public class Bulletin {
 		return "Échec";
 	}
 
+	static int verifierNote(int note) {
+		if (note > 100 || note < 0){
+			throw new IllegalArgumentException();
+		}
+		return note;
+	}
+
 	static int calculerMoyenne(int total) {
 		return Math.round((float)total / NB_NOTES) + BONUS;
 	}
 
 	static String exporterJson(String etudiant, int note1, int note2, int note3){
-		int total = note1 + note2 + note3;
+		int total = verifierNote(note1) + verifierNote(note2) + verifierNote(note3);
 		int moyenne = calculerMoyenne(total);
 		ResumeBulletin resume = new ResumeBulletin(etudiant, total, moyenne, calculerMention(moyenne));
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();

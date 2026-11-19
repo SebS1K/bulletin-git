@@ -3,6 +3,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @DisplayName("Calcul d'un bulletin")
 
@@ -42,5 +43,26 @@ class BulletinTest {
     @DisplayName("La moyenne est arrondie à l'entier le plus proche")
     void moyenneArrondieALEntierLePlusProche() {
         assertEquals(60, Bulletin.calculerMoyenne(164));
-}
+    }
+
+    @ParameterizedTest(name = "note {0} refusée")
+    @CsvSource({
+        "-1",
+        "101"
+    })
+    @DisplayName("Une note hors de 0 à 100 est refusée")
+    void noteHorsLimitesEstRefusee(int note) {
+        assertThrows(IllegalArgumentException.class,
+            () -> Bulletin.verifierNote(note));
+    }
+
+    @ParameterizedTest(name = "note {0} acceptée")
+    @CsvSource({
+        "0",
+        "100"
+    })
+    @DisplayName("Les notes 0 et 100 sont acceptées")
+    void notesLimitesSontAcceptees(int note) {
+        assertEquals(note, Bulletin.verifierNote(note));
+    }
 }
