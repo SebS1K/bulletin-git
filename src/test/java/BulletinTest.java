@@ -7,16 +7,16 @@ import org.junit.jupiter.params.provider.CsvSource;
 @DisplayName("Calcul d'un bulletin")
 
 class BulletinTest {
-@ParameterizedTest(name = "moyenne {0} : {1}")
-@CsvSource({
-    "59, Échec",
-    "60, Réussite",
-    "61, Réussite"
-})
-@DisplayName("La réussite commence à 60")
-void mentionSelonLeSeuilDeReussite(int moyenne, String mentionAttendue) {
-assertEquals(mentionAttendue, Bulletin.calculerMention(moyenne));
-}
+    @ParameterizedTest(name = "moyenne {0} : {1}")
+    @CsvSource({
+            "59, Échec",
+            "60, Réussite",
+            "61, Réussite"
+    })
+    @DisplayName("La réussite commence à 60")
+    void mentionSelonLeSeuilDeReussite(int moyenne, String mentionAttendue) {
+        assertEquals(mentionAttendue, Bulletin.calculerMention(moyenne));
+    }
 
     @Test
     void moyenneDiviseLeTotalEtAjouteLeBonus() {
@@ -37,4 +37,10 @@ assertEquals(mentionAttendue, Bulletin.calculerMention(moyenne));
     void moyenneDeTroisNotesDe60() {
         assertEquals(65, Bulletin.calculerMoyenne(180));
     }
+
+    @Test
+    @DisplayName("La moyenne est arrondie à l'entier le plus proche")
+    void moyenneArrondieALEntierLePlusProche() {
+        assertEquals(60, Bulletin.calculerMoyenne(164));
+}
 }

@@ -30,8 +30,8 @@ public class Bulletin {
 		return "Échec";
 	}
 
-	private static int calculerMoyenne(int total) {
-		return total / NB_NOTES + BONUS;
+	static int calculerMoyenne(int total) {
+		return Math.round((float)total / NB_NOTES) + BONUS;
 	}
 
 	static String exporterJson(String etudiant, int note1, int note2, int note3){
